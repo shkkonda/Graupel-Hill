@@ -1,7 +1,7 @@
 # Python
 [Prepared by Konrapp Software Solutions Private Limited](http://konrapp.in "Konrapp's Website")
 
-The course is divided into 6 interactive sessions, where the student will learn `Python` by doing. The **first session** we will introduce python and get familiar with its `syntax`. In the **second session** we will learn to create custom `functions`. **Session 3** will focus on `control statements` and `boolean algerbra`. **Session 4** introduces the students to data structures and particularly `lists`. **Session 5** will focus completely on iterative and conditional `loops`. In the **final session** students will be guided to create various real life `projects` where they will apply all the knowledge acquired throughout the course. All sessions will have a `quiz` to assess student understanding periodically.
+The course is divided into 6 interactive sessions, where the student will learn `python` by doing. The **first session** we will introduce python and get familiar with its `syntax`. In the **second session** we will learn to create custom `functions`. **Session 3** will focus on `control statements` and `boolean algerbra`. **Session 4** introduces the students to data structures and particularly `lists`. **Session 5** will focus completely on iterative and conditional `loops`. In the **final session** students will be guided to create various real life `projects` where they will apply all the knowledge acquired throughout the course. All sessions will have a `quiz` to assess student understanding periodically.
 
 ## Table of Contents
 
