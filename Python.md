@@ -582,3 +582,303 @@ What number is saved to exponented_variable in the following expression?
 ```python
 exponented_variable = 2 ** 4
 ```
+
+## Functions
+### Introduction to Functions
+
+A *function* is a collection of several lines of code. By *calling* a function, we can call all of these lines of code at once, without having to repeat ourselves.
+
+So, a function is a tool that you can use over and over again to produce consistent output from different inputs.
+
+We have already learned about one function, called `print`. We know that we call `print` by using this syntax:
+
+```python
+print(something_to_print)
+```
+
+In the rest of the lesson, we’ll learn how to build more functions, call them with and without inputs, and return values from them.
+
+### What is a Function?
+
+Let’s imagine that we are creating a program that greets customers as they enter a grocery store. We want a big screen at the entrance of the store to say:
+
+```
+Welcome to Engrossing Grocers.
+Our special is mandarin oranges.
+Have fun shopping!
+```
+
+We have learned to use print statements for this purpose:
+
+```python
+print("Welcome to Engrossing Grocers.")
+print("Our special is mandarin oranges.")
+print("Have fun shopping!")
+```
+
+Every time a customer enters, we call these three lines of code. Even if only 3 or 4 customers come in, that’s a lot of lines of code required.
+
+In Python, we can make this process easier by assigning these lines of code to a *function*. We’ll name this function `greet_customer`. In order to call a function, we use the syntax `function_name()`. The parentheses are important! They make the code inside the function run. In this example, the function call looks like:
+
+```python
+greet_customer()
+```
+
+Every time we call `greet_customer()`, we would see:
+
+```
+Welcome to Engrossing Grocer's.
+Our special is mandarin oranges.
+Have fun shopping!
+```
+
+Having this functionality inside `greet_customer()` is better form, because we have isolated this behavior from the rest of our code. Once we determine that `greet_customer()` works the way we want, we can reuse it anywhere and be confident that it greets, without having to look at the implementation. We can get the same output, with less repeated code. Repeated code is generally more error prone and harder to understand, so it’s a good goal to reduce the amount of it.
+
+**Instructions**
+
+We have made a function for you called `sing_song`. Call this function once to see what it prints out.
+
+```python
+def sing_song():
+  print("You may say I'm a dreamer")
+  print("But I'm not the only one")
+  print("I hope some day you'll join us")
+  print("And the world will be as one")
+```
+
+Now call `sing_song` a second time.
+
+### Write a Function
+
+We have seen the value of simple functions for modularizing code. Now we need to understand how to write a function. To write a function, you must have a heading and an indented block of code. The heading starts with the keyword `def` and the name of the function, followed by parentheses, and a colon. The indented block of code performs some sort of operation. This syntax looks like:
+
+```python
+def function_name():
+  some code
+```
+
+For our `greet_customer()` example, the function definition looks like:
+
+```python
+def greet_customer():
+  print("Welcome to Engrossing Grocers.")
+  print("Our special is mandarin oranges.")
+  print("Have fun shopping!")
+
+greet_customer()
+# prints greeting lines
+```
+
+The keyword `def` tells Python that we are defining a function. This function is called `greet_customer`. Everything that is indented after the `:` is what is run when `greet_customer()` is called. So every time we call `greet_customer()`, the three `print` statements run.
+
+**Instructions**
+
+Write a function called `loading_screen` that prints `"This page is loading..."` to the console.
+Outside of the function body (unindented), call `loading_screen()`.
+
+### Whitespace
+
+Consider this function:
+
+```python```
+def greet_customer():
+    print("Welcome to Engrossing Grocers.")
+    print("Our special is mandarin oranges.")
+    print("Have fun shopping!")
+```
+
+The three `print` statements are all executed together when `greet_customer()` is called. This is because they have the same level of indentation. In Python, the amount of whitespace tells the computer what is part of a function and what is not part of that function. If we wanted to write another line outside of `greet_customer()`, we would have to unindent the new line:
+
+```python
+def greet_customer():
+    print("Welcome to Engrossing Grocers.")
+    print("Our special is mandarin oranges.")
+    print("Have fun shopping!")
+print("Cleanup on Aisle 6")
+```
+
+When we call `greet_customer`, the message`"Cleanup on Aisle 6"` is not printed, as it is not part of the function.
+
+**Instructions**
+Run the script below. Look at what is printed out!
+
+```python
+def about_this_computer():
+  print("This computer is running on version Everest Puma")
+  print("This is your desktop")
+
+about_this_computer()
+```
+
+Remove the indent on the second print statement. Run the file. Now what’s printed?
+
+### Parameters
+
+Let’s return to Engrossing Grocers. The special of the day will not always be mandarin oranges, it will change every day. What if we wanted to call these three print statements again, except with a variable special? We can use *parameters*, which are variables that you can pass into the function when you call it.
+
+```python
+def greet_customer(special_item):
+    print("Welcome to Engrossing Grocers.")
+    print("Our special is " + special_item + ".")
+    print("Have fun shopping!")
+```
+
+In the definition heading for `greet_customer()`, the `special_item` is referred to as a *formal parameter*. This variable name is a placeholder for the name of the item that is the grocery’s special today. Now, when we call `greet_customer`, we have to provide a `special_item`:
+
+```python
+greet_customer("peanut butter")
+```
+That item will get printed out in the second print statement:
+
+```
+Welcome to Engrossing Grocers.
+Our special is peanut butter.
+Have fun shopping!
+```
+
+The value between the parentheses when we call the function (in this case, `"peanut butter"`) is referred to as an argument of the function call. The argument is the information that is to be used in the execution of the function. When we then call the function, Python assigns the formal parameter name `special_item` with the actual parameter data, `"peanut_butter"`. In other words, it is as if this line was included at the top of the function:
+
+```python
+special_item = "peanut butter"
+```
+
+Every time we call `greet_customer()` with a different value between the parentheses, `special_item` is assigned to hold that value.
+
+**Instructions**
+The function `mult_two_add_three()` prints a number multiplied by `2` and added to `3`. As it is written right now, the `number` that it operates on is always `5`.
+
+```python
+def mult_two_add_three():
+  number = 5
+  print(number*2 + 3)
+```
+
+1. Call the function and see what it prints to the console.
+2. Now, modify the function definition so that it has a parameter called `number`. Then delete the `number = 5` assignment on the first line of the function.
+
+Pass the number `1` into your function call.
+3. Call the function with the value `5` as the argument.
+4. Call the function with the value `-1` as the argument.
+5. Call the function with the value `0` as the argument.
+
+### Multiple Paramenters
+
+Our grocery greeting system has gotten popular, and now other supermarkets want to use it. As such, we want to be able to modify both the special item and the name of the grocery store in a greeting like this:
+
+```
+Welcome to [grocery store].
+Our special is [special item].
+Have fun shopping!
+```
+We can make a function take more than one parameter by using commas:
+
+```python
+def greet_customer(grocery_store, special_item):
+    print("Welcome to "+ grocery_store + ".")
+    print("Our special is " + special_item + ".")
+    print("Have fun shopping!")
+```
+The variables `grocery_store` and `special_item` must now both be provided to the function upon calling it:
+
+```python
+greet_customer("Stu's Staples", "papayas")
+```
+which will print:
+
+```
+Welcome to Stu's Staples.
+Our special is papayas.
+Have fun shopping!
+```
+**Instructions**
+
+The function `mult_two_add_three` takes a number, multiplies it by two and adds three. We want to make this more flexible. 
+
+```python
+def mult_two_add_three(number):
+  print(number*2 + 3)
+```  
+
+1. First, change the name of the function to `mult_x_add_y`.
+2. Now, add `x` and `y` as parameters of the function, after `number`.
+3. Inside the function, replace `2` in the print statement with `x`, and replace `3` in the print statement with `y`.
+4. Call the function with these values:
+
+`number: 5`
+
+`x: 2`
+
+`y: 3`
+5. Call the function with these values:
+
+`number: 1`
+
+`x: 3`
+
+`y: 1`
+
+### Keyword Arguements
+
+In our `greet_customer()` function from the last exercise, we had two arguments:
+
+```python
+def greet_customer(grocery_store, special_item):
+    print("Welcome to "+ grocery_store + ".")
+    print("Our special is " + special_item + ".")
+    print("Have fun shopping!")
+```
+Whichever value is put into `greet_customer()` first is assigned to `grocery_store`, and whichever value is put in second is assigned to `special_item`. These are called *positional arguments* because their assignments depend on their positions in the function call.
+
+We can also pass these arguments as *keyword arguments*, where we explicitly refer to what each argument is assigned to in the function call.
+
+```python
+greet_customer(special_item="chips and salsa", grocery_store="Stu's Staples")
+```
+```
+Welcome to Stu's Staples.
+Our special is chips and salsa.
+Have fun shopping!
+```
+
+We can use keyword arguments to make it explicit what each of our arguments to a function should refer to in the body of the function itself.
+
+We can also define default arguments for a function using syntax very similar to our keyword-argument syntax, but used during the function definition. If the function is called without an argument for that parameter, it relies on the default.
+
+```python
+def greet_customer(special_item, grocery_store="Engrossing Grocers"):
+    print("Welcome to "+ grocery_store + ".")
+    print("Our special is " + special_item + ".")
+    print("Have fun shopping!")
+```
+
+In this case, `grocery_store` has a default value of `"Engrossing Grocers"`. If we call the function with only one argument, the value of `"Engrossing Grocers"` is used for `grocery_store`:
+
+```python
+greet_customer("bananas")
+```
+```
+Welcome to Engrossing Grocers.
+Our special is bananas.
+Have fun shopping!
+```
+
+Once you give an argument a default value (making it a keyword argument), no arguments that follow can be used positionally. For example:
+
+```python
+def greet_customer(special_item="bananas", grocery_store): # this is not valid
+    ...
+
+def greet_customer(special_item, grocery_store="Engrossing Grocers"): # this is valid
+    ...
+```
+
+
+
+
+
+
+
+
+
+
+
