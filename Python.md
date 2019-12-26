@@ -872,6 +872,423 @@ def greet_customer(special_item, grocery_store="Engrossing Grocers"): # this is 
     ...
 ```
 
+**Instructions**
+
+We have defined a function `create_spreadsheet`, which just takes in a `title`, and prints that it is creating a spreadsheet.
+
+```python
+# Define create_spreadsheet():
+def create_spreadsheet(title):
+  print("Creating a spreadsheet called "+title)
+
+# Call create_spreadsheet() below with the required arguments:
+create_spreadsheet("Downloads")
+```
+
+1. Run the code to see the function work on an input of `"Downloads"`.
+2. Add the parameter `row_count` to the function definition. Set the default value to be `1000`.
+3. Change the print statement in the function to print “Creating a spreadsheet called `title` with `row_count` rows”, where title and row_count are replaced with their respective values.
+4. Call `create_spreadsheet()` with title set to `"Applications"` and row_count set to `10`.
+
+### Returns
+
+So far, we have only seen functions that print out some result to the console. Functions can also return a value to the user so that this value can be modified or used later. When there is a result from a function that can be stored in a variable, it is called a *returned* function value. We use the keyword `return` to do this.
+
+Here’s an example of a function `divide_by_four` that takes an integer argument, divides it by four, and `return`s the result:
+
+```python
+def divide_by_four(input_number):
+    return input_number/4
+```
+
+The program that calls `divide_by_four` can then use the result later:
+
+```python
+result = divide_by_four(16)
+# result now holds 4
+print("16 divided by 4 is " + str(result) + "!")
+result2 = divide_by_four(result)
+print(str(result) + " divided by 4 is " + str(result2) + "!")
+```
+This would print out:
+
+```
+16 divided by 4 is 4!
+4 divided by 4 is 1!
+```
+In this example, we returned a number, but we could also return a String:
+
+```python
+def create_special_string(special_item):
+    return "Our special is " + special_item + "."
+
+special_string = create_special_string("banana yogurt")
+
+print(special_string)
+```
+
+```
+Our special is banana yogurt.
+```
+
+**Instructions**
+The function `calculate_age` below creates a variable called `age` that is the difference between the current year, and a birth year, both of which are inputs of the function.
+
+1. Add a line to return `age`.
+2. Outside of the function, call `calculate_age` with values `2049` (`current_year`) and `1993` (`birth_year`) and save the value to a variable called `my_age`.
+3. Call `calculate_age` with values `2049` (`current_year`) and `1953` (`birth_year`) and save the value to a variable called `dads_age`.
+4. Print the string `"I am X years old and my dad is Y years old"` to the console, with `my_age` where the `X` is and `dads_age` where the `Y` is.
+
+### Multiple Return Values
+
+Sometimes we may want to return more than one value from a function. We can return several values by separating them with a comma:
+
+```python
+def square_point(x_value, y_value):
+  x_2 = x_value * x_value
+  y_2 = y_value * y_value
+  return x_2, y_2
+```
+
+This function takes in an x value and a y value, and returns them both, squared. We can get those values by assigning them both to variables when we call the function:
+
+```python
+x_squared, y_squared = square_point(1, 3)
+print(x_squared)
+print(y_squared)
+```
+This will print:
+
+```
+1
+9
+```
+
+**Instructions**
+1. Write a function called `get_boundaries()` that takes in two parameters, a number called `target` and a number called `margin`.
+
+It should create two variables:
+
+`low_limit`: `target` minus the `margin`
+`high_limit`: `margin` added to `target`
+2. Return both `low_limit` and `high_limit` from the function, in that order.
+3. Call the function on the target `100` with a margin of `20`. Save the returned values to variables called `low` and `high`.
+
+### Scope
+
+Let’s say we have our function from the last exercise that creates a string about a special item:
+
+```python
+def create_special_string(special_item):
+    return "Our special is " + special_item + "."
+```
+
+What if we wanted to access the variable `special_item` outside of the function? Could we use it?
+
+```python
+def create_special_string(special_item):
+    return "Our special is " + special_item + "."
+
+print("I don't like " + special_item)
+```
+
+If we try to run this code, we will get a NameError, telling us that `'special_item' is not defined`. The variable `special_item` has only been defined inside the space of a function, so it does not exist outside the function. We call the part of a program where `special_item` can be accessed its scope. The scope of `special_item` is only the `create_special_string` function.
+
+Variables defined outside the scope of a function may be accessible inside the body of the function:
+
+```python
+header_string = "Our special is " 
+
+def create_special_string(special_item):
+    return header_string + special_item + "."
+print(create_special_string("grapes"))
+```
+There is no error here. `header_string` can be used inside the `create_special_string` function because the scope of `header_string` is the whole file. This file would produce:
+```
+Our special is grapes.
+```
+
+**Instructions**
+Outside of the function `calculate_age()`, try to print `current_year`. 
+```python
+def calculate_age(current_year, birth_year):
+  age = current_year - birth_year
+  return age
+  ```
+
+1. Does it work?
+2. What about `age`? Outside of `calculate_age()`, try to print `age`. Does it work?
+3. No! Even though we return `age` at the end of the function, the variable `age` still only exists within the context of the function.
+Remove both print statements
+4. Let’s try something different. Remove the parameter `current_year` so that it is no longer a parameter of `calculate_age()`.
+5. It’s the year 2048.
+
+Define `current_year` as a variable BEFORE defining the function and give it the value `2048`. Now, every time `calculate_age()` is called, it should only take `birth_year`.
+6. Try to print `current_year` one last time. Does it work finally?
+7. Hooray! Now we have `current_year` globally defined. Great work!
+
+Let’s make sure our function still works: print the value of `calculate_age()` with `1970` as the argument.
+
+### Review
+
+Great! So far you have learned:
+
+How to write a function
+How to give a function inputs
+How to return values from a function
+What scope means
+Let’s practice these concepts again so that you won’t forget them!
+
+**Instructions**
+
+1. Define a function called `repeat_stuff` that takes in two inputs, stuff, and `num_repeats`.
+
+We will want to make this function print a string with `stuff` repeated `num_repeats` amount of times. For now, only put an empty `print` statement inside the function.
+2. Outside of the function, call `repeat_stuff`.
+
+You can use the value `"Row "` for `stuff` and `3` for `num_repeats`.
+3. Change the `print` statement inside `repeat_stuff` to a `return` statement instead.
+
+It should return `stuff*num_repeats`.
+
+**Note:** Multiplying a string just makes a new string with the old one repeated! For example:
+```python
+"na"*6
+```
+results in the string `"nananananana"`.
+4. Give the parameter `num_repeats` a default value of `10`.
+5. Add `repeat_stuff("Row ", 3)` and the string "Your Boat. " together and save the result to a variable called `lyrics`.
+6. Create a variable called `song` and assign it the value of `repeat_stuff` called with the singular input `lyrics`.
+7. Print `song`.
+8. 
+
+
+## Control Flow
+
+### Introduction
+
+Imagine waking up in the morning.
+
+You wake up and think,
+
+“Ugh, is it a weekday?”
+
+If so, you have to get up and get dressed and get ready for work or school. If not, you can sleep in a bit longer and catch a couple extra Z’s. But alas, it is a weekday, so you are up and dressed and you go to look outside, “What’s the weather like? Do I need an umbrella?”
+
+These questions and decisions control the flow of your morning, each step and result is a product of the conditions of the day and your surroundings. Your computer, just like you, goes through a similar flow every time it executes code. A program will run (wake up) and start moving through its checklists, is this condition met, is that condition met, okay let’s execute this code and return that value.
+
+This is the *Control Flow* of your program. In Python, your script will execute from the top down, until there is nothing left to run. It is your job to include gateways, known as conditional statements, to tell the computer when it should execute certain blocks of code. If these conditions are met, then run this function.
+
+Over the course of this lesson, you will learn how to build conditional statements using boolean expressions, and manage the control flow in your code.
+
+### Boolean Expressions
+
+In order to build control flow into our program, we want to be able to check if something is true or not. A boolean expression is a statement that can either be `True` or `False`.
+
+Let’s go back to the ‘waking up’ example. The first question, “Is today a weekday?” can be written as a boolean expression:
+
+```
+Today is a weekday.
+```
+This expression can be `True` if today is Tuesday, or it can be `False` if today is Saturday. There are no other options.
+
+Consider the phrase:
+
+```
+Friday is the best day of the week.
+```
+Is this a boolean expression?
+
+No, this statement is an opinion and is not objectively `True` or `False`. Someone else might say that “Wednesday is the best weekday,” and their statement would be no less `True` or `False` than the one above.
+
+How about the phrase:
+
+```
+Sunday starts with the letter 'C'.
+```
+
+Is this a boolean expression?
+
+Yes! This expression can only be `True` or `False`, which makes it a boolean expression. Even though the statement itself is false (Sunday starts with the letter ‘C’), it is still a boolean expression.
+
+**Instructions**
+
+Determine if the following statements are boolean expressions or not. If they are, set the matching variable to the right to `"Yes"` and if not set the variable to `"No"`. Here’s an example of what to do:
+
+Example statement:
+```
+My dog is the cutest dog in the world.
+```
+This is an opinion and not a boolean expression, so you would set `example_statement` to `"No"` in the editor to the right. Okay, now it’s your turn:
+
+Statement one:
+```
+Dogs are mammals.
+```
+Statement two:
+```
+My dog is named Pavel.
+```
+Statement three:
+```
+Dogs make the best pets.
+```
+Statement four:
+```
+Cats are female dogs.
+```
+
+```python
+example_statement = "No"
+
+statement_one =
+
+statement_two =  
+
+statement_three = 
+
+statement_four = 
+```
+
+### Relational Operators: Equals and Not Equals
+
+Now that we understand what boolean expressions are, let’s learn to create them in Python. We can create a boolean expression by using *relational operators*.
+
+Relational operators compare two items and return either `True` or `False`. For this reason, you will sometimes hear them called *comparators*.
+
+The two boolean operators we’ll cover first are:
+
+Equals: `==`
+Not equals: `!=`
+These operators compare two items and return `True` or `False` if they are equal or not.
+
+We can create boolean expressions by comparing two values using these operators:
+```python
+>>> 1 == 1
+True
+>>> 2 != 4
+True
+>>> 3 == 5
+False
+>>> '7' == 7
+False
+```
+Each of these is an example of a boolean expression. `>>>` is the prompt when you run Python in your terminal, which you can then use to evaluate simple expressions, such as these.
+
+Why is the last statement false? The `''` marks in `'7'` make it a string, which is different from the integer value `7`, so they are not equal. When using relational operators it is important to always be mindful of type.
+
+**Instructions**
+
+Determine if the following boolean expressions are `True` or `False`. Input your answer as `True` or `False` in the appropriate variable to the right.
+
+Statement one:
+
+```python
+(5 * 2) - 1 == 8 + 1
+```
+Statement two:
+```python
+13 - 6 != (3 * 2) + 1
+```
+Statement three:
+```python
+3 * (2 - 1) == 4 - 1
+```
+
+### Boolean Variables
+
+Before we go any further, let’s talk a little bit about `True` and `False`. You may notice that when you type them in the code editor (with uppercase T and F), they appear in a different color than variables or strings. This is because `True` and `False` are their own special type: `bool`.
+
+`True`` and `False` are the only `bool` types, and any variable that is assigned one of these values is called a *boolean variable*. Boolean variables can be created in several ways. The easiest way is to simply assign `True` or `False` to a variable:
+```python
+set_to_true = True
+set_to_false = False
+```
+You can also set a variable equal to a boolean expression.
+```python
+bool_one = 5 != 7 
+bool_two = 1 + 1 != 2
+bool_three = 3 * 3 == 9
+```
+These variables now contain boolean values, so when you reference them they will only return the `True` or `False` values of the expression they were assigned.
+```python
+>>>bool_three
+True
+>>>bool_four
+False
+>>>bool_five
+True
+```
+
+**Instructions**
+1. Create a variable named `my_baby_bool` and set it equal to "true".
+2. Check the type of my_baby_bool using `type(my_baby_bool)`.
+
+You’ll have to print it to get the results to display in the terminal.
+
+### If Statements
+
+“Okay okay okay, boolean variables, boolean expressions, blah blah *blah*, I thought I was learning how to build control flow into my code!”
+
+You are, I promise you!
+
+Understanding boolean variables and expressions is essential because they are the building blocks of *conditional statements*.
+
+Recall the waking-up example from the beginning of this lesson. The decision-making process of “Is it raining? If so, bring an umbrella” is a conditional statement. Here it is phrased in a different way:
+
+```
+If it is raining then bring an umbrella.
+```
+Can you pick out the boolean expression here?
+
+Right, `"it is raining"` is the boolean expression, and this conditional statement is checking to see if it is True.
+
+If `"it is raining" == True` then the rest of the conditional statement will be executed and you will bring an umbrella.
+
+This is the form of a conditional statement:
+```
+If [it is raining] then [bring an umbrella]
+```
+
+In Python, it looks very similar:
+```python
+if is_raining:
+  bring_umbrella()
+```
+
+You’ll notice that instead of “then” we have a colon, `:`. That tells the computer that what’s coming next is what should be executed if the condition is met. Let’s take a look at another conditional statement:
+
+```python
+if 2 == 4 - 2: 
+  print("apple")
+```
+
+Will this code print `apple` to the terminal? Yes, because the condition of the `if` statement, `2 == 4 - 2` is `True`.
+
+Let’s work through a couple more together:
+
+1. Below there is a function with an `if` statement. I wrote this function because my coworker Dave kept using my computer without permission and he is a real doofus. It takes `user_name` as an input and if the user is Dave it tells him to stay off my computer.
+
+Enter a user name in the field for `user_name` and try running the function.
+
+2. Oh no! We got a `SyntaxError`! This happens when we make a small error in the syntax of the conditional statement.
+
+Read through the error message carefully and see if you can find the error. Then, fix it, and run the code again.
+
+3. Ugh! Dave got around my security and has been logging onto my computer using our coworker Angela’s user name, `angela_catlady_87`.
+
+Update the function with a second `if` statement so it checks for this user name as well and returns
+
+```python
+ "I know it is you Dave! Go away!"
+ ```
+in response. That’ll teach him!
+
+
+
+
+
+
 
 
 
