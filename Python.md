@@ -1060,7 +1060,51 @@ results in the string `"nananananana"`.
 5. Add `repeat_stuff("Row ", 3)` and the string "Your Boat. " together and save the result to a variable called `lyrics`.
 6. Create a variable called `song` and assign it the value of `repeat_stuff` called with the singular input `lyrics`.
 7. Print `song`.
-8. 
+
+1. Given the following function, what will produce the output `"There is no greater agony than bearing an untold story inside you."`?
+
+```python
+def quote(x):
+  print("There is no greater agony than bearing " + x + " inside you.")
+```
+
+2. What line of code can be used to return a variable `inner_var` from a function back to the piece of code that called the function?
+3. What line of code will call `force` with a value of `10` for `mass` and a value of `9.81` for `acceleration`? 
+```python
+def force(mass, acceleration):
+  force_val = mass*acceleration
+  return force_val
+```
+4. How do you call a function called `setup` with no arguments?
+5. What happens when you call `report`?
+```python
+time = "3pm"
+mood = "good"
+
+def report():
+  print("The current time is " + time)
+  print("The mood is " + mood)
+
+print("End of report")
+```
+6. How do you call `update` with a `new_value` of `20`?
+```python
+def update(new_value = 10):
+  old_value = new_value
+```
+7. Which variables can be called in the blank spot in this code:
+```python
+counter = 0
+
+def update():
+  new_counter = counter + 1
+  return new_counter
+
+_______
+```
+
+
+
 
 
 ## Control Flow
@@ -1286,7 +1330,303 @@ in response. That’ll teach him!
 
 
 
+## Lists
 
+Learn about lists, a data structure in Python used to store ordered groups of data.
+
+```python
+primes = [2, 3, 5, 7, 11]
+print(primes)
+
+empty_list = []
+```
+In Python, lists are ordered collections of items that allow for easy use of a set of data.
+
+List values are placed in between square brackets `[ ]`, separated by commas. It is good practice to put a space in between the comma and the next value. The values in a list do not need to be unique (the same value can be repeated).
+
+Empty lists do not contain any values within the square brackets.
+
+### Creating and Modifying a list in Python
+
+#### What is a list?
+
+A *list* is an ordered set of objects in Python.
+
+Suppose we want to make a list of the heights of students in a class:
+
+- Jenny is 61 inches tall
+- Alexus is 70 inches tall
+- Sam is 67 inches tall
+- Grace is 64 inches tall
+
+In Python, we can create a variable called `heights` to store these numbers
+
+```python
+heights = [61, 70, 67, 64]
+```
+
+Notice that:
+
+1. A list begins and ends with square brackets (`[` and `]`).
+2. Each item (i.e., `67` or `70`) is separated by a comma (`,`)
+3. It’s considered good practice to insert a space (``) after each comma, but your code will run just fine if you forget the space.
+
+**Instructions**
+```python
+heights = [61, 70, 67, 64]
+
+# broken_heights = [65 71 59 62]
+```
+1.A new student just joined the class:
+
+- Cole is 65 inches tall
+
+Add Cole’s height to the end of the list `heights`.
+
+2. Remove the `#` in front of the definition of the list `broken_heights`. If you run this code, you’ll get an error:
+
+```python
+SyntaxError: invalid syntax
+```
+Add commas (`,`) to `broken_heights` so that it runs without errors.
+
+#### Lists II
+
+Lists can contain more than just numbers.
+
+Let’s revisit our height example:
+
+- Jenny is 61 inches tall
+- Alexus is 70 inches tall
+- Sam is 67 inches tall
+- Grace is 64 inches tall
+
+We can make a list of strings that contain the students’ names:
+```python
+names = ['Jenny', 'Alexus', 'Sam', 'Grace']
+```
+We can also combine multiple data types in one list. For example, this list contains both a string and an integer:
+```python
+mixed_list = ['Jenny', 61]
+```
+
+**Instructions**
+```python
+ints_and_strings = [1, 2, 3, 'four', 'five']
+```
+1. Add any string to the list `ints_and_strings`.
+2. Create a new list called sam_height that contains:    
+ - The string `'Sam'`
+ - The number `67`
+
+#### List of Lists
+
+We’ve seen that the items in a list can be numbers or strings. They can also be other lists!
+
+Once more, let’s return to our class height example:
+
+- Jenny is 61 inches tall
+- Alexus is 70 inches tall
+- Sam is 67 inches tall
+- Grace is 64 inches tall
+
+Previously, we saw that we could create a list representing both Jenny’s name and height:
+
+```python
+jenny = ['Jenny', 61]
+```
+We can put several of these lists into one list, such that each entry in the list represents a student and their height:
+```python
+heights = [['Jenny', 61], ['Alexus', 70], ['Sam', 67], ['Grace', 64]]
+```
+
+**Instructions**
+```python
+heights = [['Jenny', 61], ['Alexus', 70], ['Sam', 67], ['Grace', 64]]
+```
+1. A new student named `'Vik'` has joined our class. Vik is `68` inches tall. Add a sublist to `heights` that represents Vik and his height.
+2. Create a list of lists called `ages` where each sublist contains a student’s name and their age. Use the following data:
+
+- `'Aaron'` is `15`
+- `'Dhruti'` is `16`
+
+#### Zip
+
+Again, let’s return to our class height example:
+
+- Jenny is 61 inches tall
+- Alexus is 70 inches tall
+- Sam is 67 inches tall
+- Grace is 64 inches tall
+
+Suppose that we already had a list of names and a list of heights:
+
+```python
+names = ['Jenny', 'Alexus', 'Sam', 'Grace']
+heights = [61, 70, 67, 65]
+```
+
+If we wanted to create a list of lists that paired each name with a height, we could use the command `zip`. `zip` takes two (or more) lists as inputs and returns an *object* that contains a list of pairs. Each *pair* contains one element from each of the inputs. You won’t be able to see much about this object from just printing it:
+
+```python
+names_and_heights = zip(names, heights)
+print(names_and_heights)
+```
+because it will return the location of this object in memory. Output would look something like this:
+
+```python
+<zip object at 0x7f1631e86b48>
+```
+
+To see the nested lists, you can convert the zip object to a `list` first:
+
+```python
+print(list(names_and_heights))
+```
+returns:
+
+```python
+[('Jenny', 61), ('Alexus', 70), ('Sam', 67), ('Grace', 65)]
+```
+
+
+
+##Classes
+### Types
+
+Python equips us with many different ways to store data. A `float` is a different kind of number from an `int`, and we store different data in a `list` than we do in a `dict`. These are known as different *types*. We can check the type of a Python variable using the `type()` function.
+
+```python
+a_string = "Cool String"
+an_int = 12
+
+print(type(a_string))
+# prints "<class 'str'>"
+
+print(type(an_int))
+# prints "<class 'int'>"
+```
+
+Above, we defined two variables, and checked the `type` of these two variables. A variable’s type determines what you can do with it and how you can use it. You can’t `.get()` something from an integer, just as you can’t add two dictionaries together using `+`. This is because those operations are defined at the `type` level.
+
+**Instructions**
+- Call `type()` on the integer `5` and print the results.
+- Define a dictionary `my_dict`.
+- Print out the `type()` of `my_dict`.
+- Define a list called `my_list`.
+- Print out the `type()` of `my_list`.
+
+###Class
+
+A *class* is a template for a data type. It describes the kinds of information that class will hold and how a programmer will interact with that data. Define a class using the `class` keyword. PEP 8 Style Guide for Python Code recommends capitalizing the names of classes to make them easier to identify.
+
+```python
+class CoolClass:
+  pass
+```
+
+In the above example we created a class and named it `CoolClass`. We used the `pass` keyword in Python to indicate that the body of the class was intentionally left blank so we don’t cause an `IndentationError`. We’ll learn about all the things we can put in the body of a class in the next few exercises.
+
+**Instructions**
+Define an empty class called `Facade`. We’ll chip away at it soon!
+
+###Instantiation
+A class doesn’t accomplish anything simply by being defined. A class must be *instantiated*. In other words, we must create an *instance* of the class, in order to breathe life into the schematic.
+
+
+Instantiating a class looks a lot like calling a function. We would be able to create an instance of our defined `CoolClass` as follows:
+
+```python
+cool_instance = CoolClass()
+```
+
+Above, we created an object by adding parentheses to the name of the class. We then assigned that new instance to the variable `cool_instance` for safe-keeping.
+
+**Instructions**
+Below we see our `Facade` class from last exercise. Make a `Facade` instance and save it to the variable `facade_1`.
+
+```python
+class Facade:
+  pass
+```
+
+###Object-Oriented Programming
+
+A class instance is also called an *object*. The pattern of defining classes and creating objects to represent the responsibilities of a program is known as *Object Oriented Programming or OOP*.
+
+Instantiation takes a class and turns it into an object, the `type()` function does the opposite of that. When called with an object, it returns the class that the object is an instance of.
+
+```python
+print(type(cool_instance))
+# prints "<class '__main__.CoolClass'>"
+```
+
+We then print out the type() of `cool_instance` and it shows us that this object is of type `__main__.CoolClass`.
+
+In Python `__main__` means “this current file that we’re running” and so one could read the output from `type()` to mean “the class `CoolClass` that was defined here, in the script you’re currently running.”
+
+**Instructions**
+- Below we see `facade_1` from last exercise. Try calling `type()` on facade_1 and saving it to the variable `facade_1_type`.
+
+```python
+class Facade:
+  pass
+
+facade_1 = Facade()
+```
+- Print out `facade_1_type`.
+
+###Class Variables
+When we want the same data to be available to every instance of a class we use a *class variable*. A class variable is a variable that’s the same for every instance of the class.
+
+You can define a class variable by including it in the indented part of your class definition, and you can access all of an object’s class variables with `object.variable` syntax.
+
+```python
+class Musician:
+  title = "Rockstar"
+
+drummer = Musician()
+print(drummer.title)
+# prints "Rockstar"
+```
+
+Above we defined the class `Musician`, then instantiated `drummer` to be an object of type `Musician`. We then printed out the drummer’s `.title` attribute, which is a class variable that we defined as the string “Rockstar”.
+
+If we defined another musician, like `guitarist = Musician()` they would have the same `.title` attribute.
+
+**Instructions**
+You are digitizing grades for *Sri Gowthami Public School*. At *SGPS*, as the students call it, `65` is the minimum passing grade.
+
+Create a `Grade` class with a class attribute `minimum_passing` equal to `65`.
+
+###Methods
+
+*Methods* are functions that are defined as part of a class. The first argument in a method is always the object that is calling the method. Convention recommends that we name this first argument `self`. Methods always have at least this one argument.
+
+We define methods similarly to functions, except that they are indented to be part of the class.
+
+```python
+class Dog():
+  dog_time_dilation = 7
+
+  def time_explanation(self):
+    print("Dogs experience {} years for every 1 human year.".format(self.dog_time_dilation))
+
+pipi_pitbull = Dog()
+pipi_pitbull.time_explanation()
+# Prints "Dogs experience 7 years for every 1 human year."
+```
+
+Above we created a `Dog` class with a `time_explanation` method that takes one argument, `self`, which refers to the object calling the function. We created a `Dog` named `pipi_pitbull` and called the `.time_explanation()` method on our new object for Pipi.
+
+Notice we didn’t pass any arguments when we called `.time_explanation()`, but were able to refer to self in the function body. When you call a method it automatically passes the object calling the method as the first argument.
+
+**Instructions**
+- At *SGPS*, the students are constantly calling the school rules into question. Create a `Rules` class so that we can explain the rules.
+- Give `Rules` a method `washing_brushes` that returns the string .
+```
+"Point bristles towards the basin while washing your brushes."
+```
 
 
 
