@@ -1491,7 +1491,7 @@ returns:
 
 
 
-##Classes
+## Classes
 ### Types
 
 Python equips us with many different ways to store data. A `float` is a different kind of number from an `int`, and we store different data in a `list` than we do in a `dict`. These are known as different *types*. We can check the type of a Python variable using the `type()` function.
@@ -1516,7 +1516,7 @@ Above, we defined two variables, and checked the `type` of these two variables. 
 - Define a list called `my_list`.
 - Print out the `type()` of `my_list`.
 
-###Class
+### Class
 
 A *class* is a template for a data type. It describes the kinds of information that class will hold and how a programmer will interact with that data. Define a class using the `class` keyword. PEP 8 Style Guide for Python Code recommends capitalizing the names of classes to make them easier to identify.
 
@@ -1530,7 +1530,7 @@ In the above example we created a class and named it `CoolClass`. We used the `p
 **Instructions**
 Define an empty class called `Facade`. We’ll chip away at it soon!
 
-###Instantiation
+### Instantiation
 A class doesn’t accomplish anything simply by being defined. A class must be *instantiated*. In other words, we must create an *instance* of the class, in order to breathe life into the schematic.
 
 
@@ -1550,7 +1550,7 @@ class Facade:
   pass
 ```
 
-###Object-Oriented Programming
+### Object-Oriented Programming
 
 A class instance is also called an *object*. The pattern of defining classes and creating objects to represent the responsibilities of a program is known as *Object Oriented Programming or OOP*.
 
@@ -1576,7 +1576,7 @@ facade_1 = Facade()
 ```
 - Print out `facade_1_type`.
 
-###Class Variables
+### Class Variables
 When we want the same data to be available to every instance of a class we use a *class variable*. A class variable is a variable that’s the same for every instance of the class.
 
 You can define a class variable by including it in the indented part of your class definition, and you can access all of an object’s class variables with `object.variable` syntax.
@@ -1599,7 +1599,7 @@ You are digitizing grades for *Sri Gowthami Public School*. At *SGPS*, as the st
 
 Create a `Grade` class with a class attribute `minimum_passing` equal to `65`.
 
-###Methods
+### Methods
 
 *Methods* are functions that are defined as part of a class. The first argument in a method is always the object that is calling the method. Convention recommends that we name this first argument `self`. Methods always have at least this one argument.
 
@@ -1627,6 +1627,55 @@ Notice we didn’t pass any arguments when we called `.time_explanation()`, but 
 ```
 "Point bristles towards the basin while washing your brushes."
 ```
+
+### Methods and Arguments
+Methods can also take more arguments than just `self`:
+
+```python
+class DistanceConverter:
+  kms_in_a_mile = 1.609
+  def how_many_kms(self, miles):
+    return miles * self.kms_in_a_mile
+
+converter = DistanceConverter()
+kms_in_5_miles = converter.how_many_kms(5)
+print(kms_in_5_miles)
+# prints "8.045"
+```
+Above we defined a `DistanceConverter` class, instantiated it, and used it to convert 5 miles into kilometers. Notice again that even though `how_many_kms` takes two arguments in its definition, we only pass `miles`, because `self` is implicitly passed (and refers to the object `converter`).
+
+***Instructions***
+
+1. It’s March 14th (known in some places as **Pi day**) at *SGPS*, and you’re feeling awfully festive. You decide to create a program that calculates the area of a circle.
+
+Create a `Circle` class with class variable `pi`. Set `pi` to the approximation `3.14`.
+
+2. Give `Circle` an `area` method that takes two parameters: `self` and `radius`.
+
+Return the area as given by this formula:
+
+```python
+area = pi * radius ** 2
+```
+3. Create an instance of `Circle`. Save it into the variable `circle`.
+4. You go to measure several circles you happen to find around.
+
+   - A medium pizza that is 12 inches across.
+   - Your teaching table which is 36 inches across.
+   - The Round Room auditorium, which is 11,460 inches across.
+You save the areas of these three things into `pizza_area`, `teaching_table_area`, and `round_room_area`.
+
+Remember that the `radius` of a circle is half the diameter. We gave three diameters here, so halve them before you calculate the given circle’s area.
+
+### Constructors
+There are several methods that we can define in a Python class that have special behavior. These methods are sometimes called “magic”, because they behave differently from regular methods. Another popular term is *dunder methods*, so-named because they have two underscores (double-underscore abbreviated to “dunder”) on either side of them.
+
+The first dunder method we’re going to use is the `__init__` method (note the two underscores before and after the word “init”). This method is used to *initialize* a newly created object. It is called every time the class is instantiated.
+
+Methods that are used to prepare an object being instantiated are called *constructors*. The word “constructor” is used to describe similar features in other object-oriented programming languages but programmers who refer to a constructor in Python are usually talking about the `__init__` method.
+
+
+
 
 
 
